@@ -1,5 +1,7 @@
-var util = require('./util')
+import { Artwork } from './artwork'
+import * as util from './util'
 
-module.exports = {
-  util: util
+export {
+  Artwork,
+  util
 }
