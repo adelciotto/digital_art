@@ -1,8 +1,8 @@
-var util = require('common').util
+import { util } from 'common'
 
-var LINE_WIDTH = 2
-var LEAN_MIN = 10
-var LEAN_MAX = 40
+const LINE_WIDTH = 2
+const LEAN_MIN = 10
+const LEAN_MAX = 40
 
 function Church (props) {
   props = props || {}
@@ -14,24 +14,24 @@ function Church (props) {
   this.useRandomHeights = typeof props.useRandomHeights === 'undefined' ? true : props.useRandomHeights
   this.numLines = this.width / LINE_WIDTH
 
-  var leanDirection = props.leanDirection || 1
+  const leanDirection = props.leanDirection || 1
 
   this.leanFactor = util.getRandomNumberInRange(LEAN_MIN, LEAN_MAX) * leanDirection
 }
 
 Church.prototype = {
   draw: function (ctx) {
-    var currentX = this.startX
-    var centerIndex = this.numLines / 2
+    let currentX = this.startX
+    const centerIndex = this.numLines / 2
 
-    for (var i = 0; i < this.numLines; i++) {
-      var isCenterIndex = i === centerIndex
-      var distanceFromCenter = Math.abs(centerIndex - i)
-      var height = isCenterIndex ? this.height : this.getHeight(distanceFromCenter)
-      var x0 = currentX
-      var y0 = this.startY
-      var x1 = x0 + this.leanFactor
-      var y1 = ctx.canvas.height - height
+    for (let i = 0; i < this.numLines; i++) {
+      const isCenterIndex = i === centerIndex
+      const distanceFromCenter = Math.abs(centerIndex - i)
+      const height = isCenterIndex ? this.height : this.getHeight(distanceFromCenter)
+      const x0 = currentX
+      const y0 = this.startY
+      const x1 = x0 + this.leanFactor
+      const y1 = ctx.canvas.height - height
 
       this.drawLine(ctx, x0, y0, x1, y1)
 
@@ -54,7 +54,7 @@ Church.prototype = {
   },
 
   drawCross: function (ctx, x, y) {
-    var width = util.getRandomNumberInRange(25, 30) / 2
+    const width = util.getRandomNumberInRange(25, 30) / 2
 
     ctx.beginPath()
     ctx.moveTo(x - width, y + 5)
@@ -65,7 +65,7 @@ Church.prototype = {
   },
 
   getLineGradient: function (ctx, x0, y0, x1, y1) {
-    var gradient = ctx.createLinearGradient(x0, y0, x1, y1)
+    const gradient = ctx.createLinearGradient(x0, y0, x1, y1)
 
     gradient.addColorStop(0, 'black')
     gradient.addColorStop(0.25, '#0e1111')
