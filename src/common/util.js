@@ -1,5 +1,7 @@
 export function getRandomNumberInRange (lower, upper) {
-  const rnd = Math.random() * upper
+  return Math.random() * (upper - lower) + lower
+}
 
-  return Math.max(lower, Math.min(rnd, upper))
+export function getRandomIntegerInRange (lower, upper) {
+  return Math.floor(Math.random() * (upper - lower)) + lower
 }

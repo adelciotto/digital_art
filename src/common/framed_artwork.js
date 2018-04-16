@@ -1,19 +1,19 @@
 /** @jsx element */
 
 import { createApp, element } from 'deku'
-import styles from './artwork.css'
+import styles from './framed_artwork.css'
 
 const DEFAULT_WIDTH = 300
 const DEFAULT_HEIGHT = 150
 const DEFAULT_PROPS = {
   name: '',
-  canvasWidth: DEFAULT_WIDTH,
-  canvasHeight: DEFAULT_HEIGHT,
+  width: DEFAULT_WIDTH,
+  height: DEFAULT_HEIGHT,
   containerClassName: '',
   canvasClassName: ''
 }
 
-export class Artwork {
+export class FramedArtwork {
   constructor (props = {}) {
     this.props = { ...DEFAULT_PROPS, ...props }
     this.canvasId = `${props.name}Canvas`
@@ -29,7 +29,7 @@ export class Artwork {
   }
 
   render () {
-    const size = 150
+    const size = 100
     const x = this.width / 2 - size / 2
     const y = this.height / 2 - size / 2
 
@@ -39,13 +39,21 @@ export class Artwork {
   }
 
   renderCanvas () {
-    const { containerClassName, canvasClassName, canvasWidth, canvasHeight } = this.props
+    const { containerClassName, canvasClassName, width, height, name } = this.props
     const containerClasses = `${styles.canvasContainer} ${styles.frame} ${containerClassName}`
-    const canvasClasses = `${styles.canvas} ${canvasClassName}`
+    const containerInlineStyles = [
+      `width: ${width}px`,
+      `height: ${height}px`
+    ].join(';')
 
     return (
-      <div class={containerClasses}>
-        <canvas id={this.canvasId} class={canvasClasses} width={canvasWidth} height={canvasHeight} />
+      <div class={containerClasses} style={containerInlineStyles}>
+        <canvas
+          id={this.canvasId}
+          class={canvasClassName}
+          width={width}
+          height={height} />
+        <div class={styles.signature}>{name} by adelciotto</div>
       </div>
     )
   }

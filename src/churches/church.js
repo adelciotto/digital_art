@@ -54,7 +54,7 @@ Church.prototype = {
   },
 
   drawCross: function (ctx, x, y) {
-    const width = util.getRandomNumberInRange(25, 30) / 2
+    const width = util.getRandomNumberInRange(25, 50) / 2
 
     ctx.beginPath()
     ctx.moveTo(x - width, y + 5)
@@ -78,7 +78,7 @@ Church.prototype = {
 
   getHeight: function (distanceFromCenter) {
     if (this.useRandomHeights) {
-      return this.height - (distanceFromCenter + Math.random() * 30)
+      return this.height * ((this.numLines - distanceFromCenter) / this.numLines) + Math.random() * 40
     }
 
     return this.height - distanceFromCenter

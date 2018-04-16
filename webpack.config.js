@@ -2,7 +2,8 @@ const path = require('path')
 
 module.exports = {
   entry: {
-    churches: './src/churches/churches.js'
+    churches: './src/churches/churches.js',
+    mountains: './src/mountains/mountains.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),

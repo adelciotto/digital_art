@@ -1,14 +1,16 @@
-import { Artwork } from 'common'
+import { FramedArtwork } from 'common'
 import Church from './church'
 
 import styles from './styles.css'
 
-class Churches extends Artwork {
+class Churches extends FramedArtwork {
   constructor () {
     super({
       name: 'churches',
       containerClassName: styles.canvasContainer,
-      canvasClassName: styles.canvas
+      canvasClassName: styles.canvas,
+      width: 360,
+      height: 640
     })
   }
 

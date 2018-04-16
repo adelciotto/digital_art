@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i');
+
+body {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.canvasContainer {
+  margin: 33px auto auto;
+  display: inline-block;
+}
+
+.frame {
+  border-radius: 2px;
+  border: solid 14px #232b2b;
+  box-shadow: 0 0 5px 0 rgba(0,0,0,.25) inset, 0 5px 10px 5px rgba(0,0,0,.25);
+}
+
+.signature {
+  font-style: italic;
+  margin-top: 20px;
+  float: right;
+}
